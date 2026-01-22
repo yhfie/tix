@@ -80,10 +80,14 @@
                         </label>
                         <select 
                             name="category_id"
-                            class="select select-bordered w-full" required>
+                            class="select select-bordered w-full" 
+                            required
+                        >
                             <option value="" disabled selected>Pilih Kategori</option>
                             @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->nama }}</option>
+                                <option value="{{ $category->id }}">
+                                    {{ $category->name }}
+                                </option>
                             @endforeach
                         </select>
                     </div>

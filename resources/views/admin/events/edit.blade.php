@@ -1,0 +1,169 @@
+<x-layouts.admin title="Edit Event">
+    <div class="container mx-auto p-10">
+        <div class="card bg-base-100 shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title text-2xl mb-6">Edit Event</h2>
+
+                <form id="eventForm" class="space-y-4" method="post"
+                    action="{{ route('admin.events.update', $event->id) }}" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <!-- Nama Event -->
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text font-semibold">Judul Event</span>
+                        </label>
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Contoh: Konser Musik Rock"
+                            class="input input-bordered w-full" value="{{ $event->name }}" required 
+                        />
+                    </div>
+
+                    <!-- Deskripsi -->
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text font-semibold">Deskripsi</span>
+                        </label>
+                        <br>
+                        <textarea
+                            name="description"
+                            placeholder="Deskripsi lengkap tentang event..."
+                            class="textarea textarea-bordered h-24 w-full" required>{{ $event->description }}
+                        </textarea>
+                    </div>
+
+                    <!-- Tanggal & Waktu -->
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text font-semibold">Tanggal & Waktu</span>
+                        </label>
+                        <input 
+                            type="datetime-local" 
+                            name="date_time" 
+                            class="input input-bordered w-full"
+                            value="{{ $event->date_time->format('Y-m-d\TH:i') }}" 
+                            required 
+                        />
+                    </div>
+
+                    <!-- Lokasi -->
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text font-semibold">Lokasi</span>
+                        </label>
+                        <input 
+                            type="text"
+                            name="location"
+                            placeholder="Contoh: Stadion Utama"
+                            class="input input-bordered w-full" 
+                            value="{{ $event->location }}" 
+                            required 
+                        />
+                    </div>
+
+                    <!-- Kategori -->
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text font-semibold">Kategori</span>
+                        </label>
+                        <select 
+                            name="category_id" 
+                            class="select select-bordered w-full" 
+                            required
+                        >
+                            <option value="" disabled selected>Pilih Kategori</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}"
+                                    {{ $category->id == $event->category_id ? 'selected' : '' }}>
+                                    {{ $category->name }}
+                                </option>
+                            @endforeach
+
+                        </select>
+                    </div>
+
+                    <!-- Upload Gambar -->
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text font-semibold">Gambar Event</span>
+                        </label>
+                        <input
+                            type="file"
+                            name="name" 
+                            accept="image/*"
+                            class="file-input file-input-bordered w-full" />
+                        <label class="label">
+                            <span class="label-text-alt">Format: JPG, PNG, max 5MB</span>
+                        </label>
+                    </div>
+
+                    <!-- Preview Gambar -->
+                    <div id="imagePreview" class="overflow-hidden {{ $event->picture ? '' : 'hidden' }}">
+                        <label class="label">
+                            <span class="label-text font-semibold">Preview Gambar</span>
+                        </label>
+                        <br>
+                        <div class="avatar max-w-sm">
+                            <div class="w-full rounded-lg">
+                                @if ($event->picture)
+                                    <img id="previewImg" src="{{ asset('images/events/' . $event->picture) }}"
+                                        alt="Preview">
+                                @else
+                                    <img id="previewImg" src="" alt="Preview">
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tombol Submit -->
+                    <div class="card-actions justify-end mt-6">
+                        <a href="{{ route('admin.events.index') }}">
+                            <button type="button" class="btn btn-ghost">Kembali</button>
+                        </a>
+                        <button type="reset" class="btn btn-ghost">Reset</button>
+                        <button type="submit" class="btn btn-primary">Simpan Event</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Alert Success -->
+        <div id="successAlert" class="alert alert-success mt-4 hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Event berhasil disimpan!</span>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('eventForm');
+        const fileInput = form.querySelector('input[type="file"]');
+        const imagePreview = document.getElementById('imagePreview');
+        const previewImg = document.getElementById('previewImg');
+        const successAlert = document.getElementById('successAlert');
+
+        // Preview gambar saat dipilih
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImg.src = e.target.result;
+                    imagePreview.classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Handle reset
+        form.addEventListener('reset', function() {
+            imagePreview.classList.add('hidden');
+            successAlert.classList.add('hidden');
+        });
+    </script>
+</x-layouts.admin>

@@ -35,14 +35,14 @@ class CategoryController extends Controller
         ]);
 
         if (!isset($payload['name'])){
-            return redirect()->route('admin.categories.index')->with('status', 'Category must be filled');
+            return redirect()->route('admin.categories.index')->with('warning', 'Category must be filled');
         }
 
         Category::create([
             'name' => $payload['name']
         ]);
 
-        return redirect()->route('admin.categories.index')->with('status', 'Category created');
+        return redirect()->route('admin.categories.index')->with('success', 'Category created');
     }
 
     /**
@@ -71,14 +71,14 @@ class CategoryController extends Controller
         ]);
 
         if (!isset($payload['name'])){
-            return redirect()->route('admin.categories.index')->with('status', 'Category must be filled');
+            return redirect()->route('admin.categories.index')->with('warning', 'Category must be filled');
         }
 
         $category = Category::findOrFail($id);
         $category->name = $payload['name'];
         $category->save();
 
-        return redirect()->route('admin.categories.index')->with('status', 'Category updated');
+        return redirect()->route('admin.categories.index')->with('success', 'Category updated');
     }
 
     /**

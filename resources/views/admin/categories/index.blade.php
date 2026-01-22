@@ -12,6 +12,18 @@
             document.querySelector('.toast')?.remove()
         }, 3000)
         </script>
+    @elseif (session('warning'))
+        <div class="toast toast-bottom toast-center">
+            <div class="alert alert-warning">
+                <span>{{ session('warning') }}</span>
+            </div>
+        </div>
+
+        <script>
+            setTimeout(() => {
+                document.querySelector('.toast')?.remove()
+            }, 3000)
+        </script>
     @endif
 
     <div class="container mx-auto p-10">

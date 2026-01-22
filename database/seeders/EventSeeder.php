@@ -21,7 +21,7 @@ class EventSeeder extends Seeder
                 'date_time' => '2024-08-15 19:00:00',
                 'location' => 'Stadion Utama',
                 'category_id' => 1,
-                'picture' => 'events/konser_rock.jpg',
+                'picture' => 'rock.jpg',
             ],
             [
                 'user_id' => 1,
@@ -30,7 +30,7 @@ class EventSeeder extends Seeder
                 'date_time' => '2024-09-10 10:00:00',
                 'location' => 'Galeri Seni Kota',
                 'category_id' => 2,
-                'picture' => 'events/pameran_seni.jpg',
+                'picture' => 'art.jpg',
             ],
             [
                 'user_id' => 1,
@@ -39,7 +39,25 @@ class EventSeeder extends Seeder
                 'date_time' => '2024-10-05 12:00:00',
                 'location' => 'Taman Kota',
                 'category_id' => 3,
-                'picture' => 'events/festival_makanan.jpg',
+                'picture' => 'food.jpg',
+            ],
+            [
+                'user_id' => 1,
+                'name' => 'Konser Rock Internasional',
+                'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+                'date_time' => '2024-10-05 12:00:00',
+                'location' => 'Taman Kota',
+                'category_id' => 3,
+                'picture' => 'rock.jpg',
+            ],
+            [
+                'user_id' => 1,
+                'name' => 'Pertunjukan Teater',
+                'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+                'date_time' => '2024-10-05 12:00:00',
+                'location' => 'Stadium Utama',
+                'category_id' => 3,
+                'picture' => 'teater.jpg',
             ],
         ];
 

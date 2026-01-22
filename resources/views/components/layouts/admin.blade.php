@@ -6,11 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'Admin Dashboard' }}</title>
 
+    <link href="https://fonts.bunny.net/css?family=manrope:400,500,600&display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body>
+<body class="font-sans antialiased">
     <div class="drawer lg:drawer-open w-full min-h-screen bg-gray-50">
         <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
         <div class="drawer-content">

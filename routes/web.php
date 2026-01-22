@@ -6,15 +6,10 @@ use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\HistoriesController;
 use App\Http\Controllers\Admin\TicketController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function () {
 
@@ -22,23 +17,23 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::middleware('admin')->prefix('admin')->name('admin.')->group(function() {
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    
+        // Category CRUD
+        Route::resource('categories', CategoryController::class);
+    
+        // Event CRUD
+        Route::resource('events', EventController::class);
+    
+        // Ticket CRUD
+        Route::resource('tickets', TicketController::class);
+    
+        // Histories
+        Route::get('/histories', [HistoriesController::class, 'index'])->name('histories.index');
+        Route::get('/histories/{id}', [HistoriesController::class, 'show'])->name('histories.show');
+    });
 });
 
-Route::middleware('admin')->prefix('admin')->name('admin.')->group(function() {
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-
-    // Category CRUD
-    Route::resource('categories', CategoryController::class);
-
-    // Event CRUD
-    Route::resource('events', EventController::class);
-
-    // Ticket CRUD
-    Route::resource('tickets', TicketController::class);
-
-    // Histories
-    Route::get('/histories', [HistoriesController::class, 'index'])->name('histories.index');
-    Route::get('/histories/{id}', [HistoriesController::class, 'show'])->name('histories.show');
-});
 
 require __DIR__.'/auth.php';

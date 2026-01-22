@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\HistoriesController;
 use App\Http\Controllers\Admin\TicketController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,10 @@ Route::middleware('admin')->prefix('admin')->name('admin.')->group(function() {
 
     // Ticket CRUD
     Route::resource('tickets', TicketController::class);
+
+    // Histories
+    Route::get('/histories', [HistoriesController::class, 'index'])->name('histories.index');
+    Route::get('/histories/{id}', [HistoriesController::class, 'show'])->name('histories.show');
 });
 
 require __DIR__.'/auth.php';

@@ -91,7 +91,7 @@
                         </label>
                         <input
                             type="file"
-                            name="name" 
+                            name="picture" 
                             accept="image/*"
                             class="file-input file-input-bordered w-full" />
                         <label class="label">

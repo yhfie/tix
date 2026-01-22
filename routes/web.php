@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\TicketController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,9 @@ Route::middleware('admin')->prefix('admin')->name('admin.')->group(function() {
 
     // Event CRUD
     Route::resource('events', EventController::class);
+
+    // Ticket CRUD
+    Route::resource('tickets', TicketController::class);
 });
 
 require __DIR__.'/auth.php';

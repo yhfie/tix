@@ -11,7 +11,7 @@
         <div class="lg:flex ">
             <div class="lg:w-1/3 p-4">
             <img
-                src="{{ $order->event?->picture ? asset($order->event->picture) : 'https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp' }}"
+                src="{{ $order->event?->picture ? asset('images/events/' . $order->event->picture) : 'https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp' }}"
                 alt="{{ $order->event?->name ?? 'Event' }}" class="w-full object-cover mb-2" />
             <h2 class="font-semibold text-lg">{{ $order->event?->name ?? 'Event' }}</h2>
             <p class="text-sm text-gray-500 mt-1">{{ $order->event?->location ?? '' }}</p>
@@ -20,11 +20,11 @@
 
 
             <div class="space-y-3">
-                @foreach($order->order_details as $d)
+                @foreach($order->orderDetails as $d)
                 <div class="flex justify-between items-center">
                     <div>
-                    <div class="font-bold">{{ $d->tiket->type }}</div>
-                    <div class="text-sm text-gray-500">Qty: {{ $d->jumlah }}</div>
+                    <div class="font-bold">{{ $d->type }}</div>
+                    <div class="text-sm text-gray-500">Qty: {{ $d->quantity }}</div>
                     </div>
                     <div class="text-right">
                     <div class="font-bold">Rp {{ number_format($d->subtotal, 0, ',', '.') }}</div>

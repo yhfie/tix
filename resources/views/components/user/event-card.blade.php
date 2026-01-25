@@ -41,16 +41,16 @@ $imageUrl = $image
             <p class="text-sm">
                 📍 {{ $location }}
             </p>
-
+            
             @if ($price)
-            <p class="">
-                Harga mulai dari 
-                <p class="font-bold text-lg mt-2">{{ $formattedPrice }}</p>
-            </p>
+                <p class="">
+                    Harga mulai dari 
+                    <p class="font-bold text-lg mt-2">{{ $formattedPrice }}</p>
+                </p>
             @elseif (!$price)
-            <p class="text-sm text-gray-500">
-                Harga tiket belum tersedia
-            </p>
+                <p class="text-sm text-gray-500">
+                    Harga tiket belum tersedia
+                </p>
             @endif
 
         </div>

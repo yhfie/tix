@@ -21,7 +21,7 @@ class OrderDetail extends Model
         return $this->belongsTo(Order::class);
     }
 
-    public function tiket()
+    public function ticket()
     {
         return $this->belongsTo(Ticket::class);
     }

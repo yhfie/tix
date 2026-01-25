@@ -35,7 +35,10 @@
                 :title="$event->name" 
                 :date="$event->date_time" 
                 :location="$event->location"
-                :price="$event->tickets_min_price" :image="$event->picture" />
+                :price="$event->tickets_min_price"
+                :image="$event->picture"
+                :href="route('events.show', $event)" 
+            />
             @endforeach
         </div>
     </section>

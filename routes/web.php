@@ -6,10 +6,14 @@ use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\HistoriesController;
 use App\Http\Controllers\Admin\TicketController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\EventController as UserEventController;
 use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Event detail
+Route::get('/events/{event}', [UserEventController::class, 'show'])->name('events.show');
 
 Route::middleware('auth')->group(function () {
 

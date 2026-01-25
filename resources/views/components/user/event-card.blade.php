@@ -30,9 +30,9 @@ $imageUrl = $image
         </figure>
 
         <div class="card-body">
-            <h2 class="card-title">
+            <h1 class="card-title text-xl font-bold">
                 {{ $title }}
-            </h2>
+            </h1>
 
             <p class="text-sm text-gray-500">
                 {{ $formattedDate }}
@@ -42,9 +42,16 @@ $imageUrl = $image
                 📍 {{ $location }}
             </p>
 
-            <p class="font-bold text-lg mt-2">
-                {{ $formattedPrice }}
+            @if ($price)
+            <p class="">
+                Harga mulai dari 
+                <p class="font-bold text-lg mt-2">{{ $formattedPrice }}</p>
             </p>
+            @elseif (!$price)
+            <p class="text-sm text-gray-500">
+                Harga tiket belum tersedia
+            </p>
+            @endif
 
         </div>
     </div>

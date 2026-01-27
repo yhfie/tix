@@ -19,6 +19,7 @@ Route::get('/events/{event}', [UserEventController::class, 'show'])->name('event
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
 Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+Route::delete('/orders/{order}', [OrderController::class, 'destroy'])->name('orders.destroy');
 
 Route::middleware('auth')->group(function () {
 

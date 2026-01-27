@@ -9,5 +9,6 @@
 
 ---
 
-migration: add soft deletes to a certain table
+migration: add soft deletes to a certain table:
+
 `php artisan make:migration add_deleted_at_to_orders_table --table=orders`

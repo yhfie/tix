@@ -8,7 +8,7 @@
         <!-- Sidebar content here -->
         <ul class="menu w-full grow gap-1">
             <!-- Dashboard Item -->
-            <li class="{{ request()->routeIs('admin.dashboard') ? 'bg-gray-200 rounded-lg' : '' }}">
+            <li class="{{ request()->routeIs('admin.dashboard') ? 'bg-gray-200 rounded-lg font-bold' : '' }}">
                 <a href="{{ route('admin.dashboard') }}" class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Dashboard">
                     <!-- Home icon -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -19,7 +19,7 @@
             </li>
 
             <!-- Kategori item -->
-            <li class="{{ request()->routeIs('admin.categories.*') ? 'bg-gray-200 rounded-lg' : '' }}">
+            <li class="{{ request()->routeIs('admin.categories.*') ? 'bg-gray-200 rounded-lg font-bold' : '' }}">
                 <a href="{{ route('admin.categories.index') }}" class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Kategori">
                     <!-- icon Kategori -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -30,7 +30,7 @@
             </li>
             
             <!-- Event item -->
-            <li class="{{ request()->routeIs('admin.events.*') ? 'bg-gray-200 rounded-lg' : '' }}">
+            <li class="{{ request()->routeIs('admin.events.*') ? 'bg-gray-200 rounded-lg font-bold' : '' }}">
                 <a href="{{ route('admin.events.index') }}" class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Event">
                     <!-- icon Event -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -41,7 +41,7 @@
             </li>
             
             <!-- History item -->
-            <li class="{{ request()->routeIs('admin.histories.*') ? 'bg-gray-200 rounded lg' : '' }}">
+            <li class="{{ request()->routeIs('admin.histories.*') ? 'bg-gray-200 rounded lg font-bold' : '' }}">
                 <a 
                     href="{{ route('admin.histories.index') }}" class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="History"
                 >
@@ -51,7 +51,20 @@
                     </svg>
                     <span class="is-drawer-close:hidden">History Pembelian</span>
                 </a>
-                </li>
+            </li>
+
+            <!-- History item -->
+            <li class="{{ request()->routeIs('admin.payment_types.*') ? 'bg-gray-200 rounded lg font-bold' : '' }}">
+                <a 
+                    href="{{ route('admin.payment_types.index') }}" class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="History"
+                >
+                    {{-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg> --}}
+                    <span class="is-drawer-close:hidden">Jenis Pembayaran</span>
+                </a>
+            </li>
         </ul>
 
         <!-- logout -->

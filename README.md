@@ -9,6 +9,13 @@
 
 ---
 
+add new column to existing table
+```
+php artisan make:migration add_new_column_to_existing_table --table=table_a
+```
+
+**example**:
+
 migration: add soft deletes to a certain table:
 ```
 php artisan make:migration add_deleted_at_to_orders_table --table=orders

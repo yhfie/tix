@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\HistoriesController;
+use App\Http\Controllers\Admin\PaymentTypeController;
 use App\Http\Controllers\Admin\TicketController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\EventController as UserEventController;
@@ -42,6 +43,9 @@ Route::middleware('auth')->group(function () {
         // Histories
         Route::get('/histories', [HistoriesController::class, 'index'])->name('histories.index');
         Route::get('/histories/{id}', [HistoriesController::class, 'show'])->name('histories.show');
+
+        // Payment Type Management
+        Route::resource('payment_types', PaymentTypeController::class);
     });
 });
 

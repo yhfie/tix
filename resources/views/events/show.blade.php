@@ -108,6 +108,26 @@
                     <p class="text-gray-500">Belum ada tiket dipilih</p>
                 </div>
 
+                <!-- Jenis Pembayaran -->
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text font-semibold">Jenis Pembayaran</span>
+                    </label>
+                    <select 
+                        id="payment_type_id"
+                        name="payment_type_id"
+                        class="select select-bordered w-full" 
+                        required
+                    >
+                        <option value="" disabled selected>Pilih Jenis Pembayaran</option>
+                        @foreach ($payment_types as $pt)
+                            <option value="{{ $pt->id }}">
+                                {{ $pt->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
                 @auth
                     <button 
                         id="checkoutButton"
@@ -127,15 +147,20 @@
             <form method="dialog" class="modal-box">
                 <h3 class="font-bold text-lg">Konfirmasi Pembelian</h3>
                 <div class="mt-4 space-y-2 text-sm">
-                <div id="modalItems">
-                    <p class="text-gray-500">Belum ada item.</p>
+                    <div id="modalItems">
+                        <p class="text-gray-500">Belum ada item.</p>
+                    </div>
+
+                    <div class="divider"></div>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold">Total</span>
+                        <span class="font-bold text-lg" id="modalTotal">Rp 0</span>
+                    </div>
                 </div>
 
-                <div class="divider"></div>
-                <div class="flex justify-between items-center">
-                    <span class="font-bold">Total</span>
-                    <span class="font-bold text-lg" id="modalTotal">Rp 0</span>
-                </div>
+                <div class="text-right mt-2">
+                    <span class="">via</span>
+                    <span class="font-bold text-lg" id="modalPayment"></span>
                 </div>
 
                 <div class="modal-action">
@@ -258,6 +283,11 @@
             }
         });
 
+        const select = document.getElementById('payment_type_id');
+        const paymentTypeName = select.options[select.selectedIndex].text;
+
+        modalPayment.textContent = paymentTypeName;
+
         modalItems.innerHTML = itemsHtml || '<p class="text-gray-500">Belum ada item.</p>';
         modalTotal.textContent = formatRupiah(total);
 
@@ -289,6 +319,8 @@
                 if (qty > 0) items.push({ ticket_id: t.id, quantity: qty});
             });
 
+            const payment_type = document.getElementById('payment_type_id').value;
+
             if (items.length === 0) {
                 alert('Tidak ada tiket dipilih');
                 btn.removeAttribute('disabled');
@@ -304,7 +336,7 @@
                     'Accept': 'application/json',
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                 },
-                body: JSON.stringify({ event_id: {{ $event->id }}, items })
+                body: JSON.stringify({ event_id: {{ $event->id }}, items, payment_type_id: payment_type })
                 });
 
                 if (!res.ok) {

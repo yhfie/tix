@@ -52,6 +52,7 @@ class OrderController extends Controller
             'items' => 'required|array|min:1',
             'items.*.ticket_id' => 'required|integer|exists:tickets,id',
             'items.*.quantity' => 'required|integer|min:1',
+            'payment_type_id' => 'required|integer|exists:payment_types,id',
         ]);
 
         // Get currently authenticated user
@@ -89,6 +90,7 @@ class OrderController extends Controller
                 'event_id' => $data['event_id'],
                 'order_date' => Carbon::now(),
                 'total' => $total,
+                'payment_type_id' => $data['payment_type_id'],
                 ]);
 
                 /**

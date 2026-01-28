@@ -27,8 +27,9 @@
                 </div>
 
                 <div class="text-right">
-                    <div class="font-bold text-lg">
-                        Rp {{ number_format($order->total, 0, ',', '.') }}
+                    <div>
+                        <p class="font-bold text-lg">Rp {{ number_format($order->total, 0, ',', '.') }}</p>
+                        <p>via {{ $order->paymentType->name }}</p>
                     </div>
                     <a href="{{ route('orders.show', $order) }}" class="btn btn-primary mt-3 text-white">Lihat Detail</a>
                     <a class="btn bg-white border-2 border-red-700 mt-3 text-red-700" onclick="openDeleteModal(this)" data-id="{{ $order->id }}">

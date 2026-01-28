@@ -21,6 +21,7 @@ class Order extends Model
         'event_id',
         'order_date',
         'total',
+        'payment_type_id',
     ];
 
     public function user()
@@ -42,5 +43,10 @@ class Order extends Model
     public function orderDetails()
     {
         return $this->hasMany(OrderDetail::class);
+    }
+
+    public function paymentType()
+    {
+        return $this->belongsTo(PaymentType::class);
     }
 }

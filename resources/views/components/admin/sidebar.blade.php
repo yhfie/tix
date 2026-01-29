@@ -8,7 +8,7 @@
         <!-- Sidebar content here -->
         <ul class="menu w-full grow gap-1">
             <!-- Dashboard Item -->
-            <li class="{{ request()->routeIs('admin.dashboard') ? 'bg-gray-200 rounded-lg' : '' }}">
+            <li class="{{ request()->routeIs('admin.dashboard') ? 'bg-gray-200 font-bold rounded-lg' : '' }}">
                 <a href="{{ route('admin.dashboard') }}" class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Dashboard">
                     <!-- Home icon -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -19,7 +19,7 @@
             </li>
 
             <!-- Kategori item -->
-            <li class="{{ request()->routeIs('admin.categories.*') ? 'bg-gray-200 rounded-lg' : '' }}">
+            <li class="{{ request()->routeIs('admin.categories.*') ? 'bg-gray-200 font-bold rounded-lg' : '' }}">
                 <a href="{{ route('admin.categories.index') }}" class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Kategori">
                     <!-- icon Kategori -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -30,7 +30,7 @@
             </li>
             
             <!-- Event item -->
-            <li class="{{ request()->routeIs('admin.events.*') ? 'bg-gray-200 rounded-lg' : '' }}">
+            <li class="{{ request()->routeIs('admin.events.*') ? 'bg-gray-200 font-bold rounded-lg' : '' }}">
                 <a href="{{ route('admin.events.index') }}" class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Event">
                     <!-- icon Event -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -40,8 +40,21 @@
                 </a>
             </li>
             
+            <!-- Manajemen Lokasi -->
+            <li class="{{ request()->routeIs('admin.locations.*') ? 'bg-gray-200 font-bold rounded lg' : '' }}">
+                <a 
+                    href="{{ route('admin.locations.index') }}" class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Location"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="location-icon">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <span class="is-drawer-close:hidden">Manajemen Lokasi</span>
+                </a>
+            </li>
+
             <!-- History item -->
-            <li class="{{ request()->routeIs('admin.histories.*') ? 'bg-gray-200 rounded lg' : '' }}">
+            <li class="{{ request()->routeIs('admin.histories.*') ? 'bg-gray-200 font-bold rounded lg' : '' }}">
                 <a 
                     href="{{ route('admin.histories.index') }}" class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="History"
                 >
@@ -51,7 +64,7 @@
                     </svg>
                     <span class="is-drawer-close:hidden">History Pembelian</span>
                 </a>
-                </li>
+            </li>
         </ul>
 
         <!-- logout -->

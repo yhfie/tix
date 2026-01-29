@@ -67,7 +67,7 @@
                             type="text" 
                             name="location" 
                             placeholder="Contoh: Stadion Utama"
-                            class="input input-bordered w-full" value="{{ $event->location }}" disabled required />
+                            class="input input-bordered w-full" value="{{ $event->location->name }}" disabled required />
                     </div>
 
                     <!-- Kategori -->

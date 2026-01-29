@@ -17,7 +17,7 @@
                         {{ $order->event?->name ?? 'Event' }}
                     </h2>
                     <p class="text-sm text-gray-500 mt-1">
-                        {{ $order->event?->location ?? '' }}
+                        {{ $order->event?->location->name ?? '' }}
                     </p>
                 </div>
                 <div class="card-body lg:w-2/3">

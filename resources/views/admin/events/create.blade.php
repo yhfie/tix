@@ -61,7 +61,7 @@
                     </div>
 
                     <!-- Lokasi -->
-                    <div class="form-control">
+                    <!-- <div class="form-control">
                         <label class="label">
                             <span class="label-text font-semibold">Lokasi</span>
                         </label>
@@ -71,6 +71,25 @@
                             placeholder="Contoh: Stadion Utama"
                             class="input input-bordered w-full"
                             required />
+                    </div> -->
+
+                    <!-- Lokasi -->
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text font-semibold">Lokasi</span>
+                        </label>
+                        <select 
+                            name="location_id"
+                            class="select select-bordered w-full" 
+                            required
+                        >
+                            <option value="" disabled selected>Pilih Lokasi</option>
+                            @foreach ($locations as $loc)
+                                <option value="{{ $loc->id }}">
+                                    {{ $loc->name }}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <!-- Kategori -->

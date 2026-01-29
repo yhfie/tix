@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\HistoriesController;
+use App\Http\Controllers\Admin\LocationController;
 use App\Http\Controllers\Admin\TicketController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\EventController as UserEventController;
@@ -37,6 +38,9 @@ Route::middleware('auth')->group(function () {
     
         // Ticket CRUD
         Route::resource('tickets', TicketController::class);
+    
+        // Location CRUD
+        Route::resource('locations', LocationController::class);
     
         // Histories
         Route::get('/histories', [HistoriesController::class, 'index'])->name('histories.index');

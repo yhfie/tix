@@ -37,7 +37,7 @@
                         <td>{{ $event->name }}</td>
                         <td>{{ $event->category->name }}</td>
                         <td>{{ $event->date_time->format('d M Y') }}</td>
-                        <td>{{ $event->location }}</td>
+                        <td>{{ $event->location->name }}</td>
                         <td>
                             <a href="{{ route('admin.events.show', $event->id) }}" class="btn btn-sm btn-info mr-2">
                                 Detail

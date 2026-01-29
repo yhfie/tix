@@ -21,6 +21,7 @@ class EventSeeder extends Seeder
                 'date_time' => '2024-08-15 19:00:00',
                 'location' => 'Stadion Utama',
                 'category_id' => 1,
+                'location_id' => 1,
                 'picture' => 'rock.jpg',
             ],
             [
@@ -30,6 +31,7 @@ class EventSeeder extends Seeder
                 'date_time' => '2024-09-10 10:00:00',
                 'location' => 'Galeri Seni Kota',
                 'category_id' => 2,
+                'location_id' => 1,
                 'picture' => 'art.jpg',
             ],
             [
@@ -39,6 +41,7 @@ class EventSeeder extends Seeder
                 'date_time' => '2024-10-05 12:00:00',
                 'location' => 'Taman Kota',
                 'category_id' => 3,
+                'location_id' => 2,
                 'picture' => 'food.jpg',
             ],
             [
@@ -48,6 +51,7 @@ class EventSeeder extends Seeder
                 'date_time' => '2024-10-05 12:00:00',
                 'location' => 'Taman Kota',
                 'category_id' => 3,
+                'location_id' => 2,
                 'picture' => 'rock.jpg',
             ],
             [
@@ -57,6 +61,7 @@ class EventSeeder extends Seeder
                 'date_time' => '2024-10-05 12:00:00',
                 'location' => 'Stadium Utama',
                 'category_id' => 3,
+                'location_id' => 1,
                 'picture' => 'teater.jpg',
             ],
         ];
